@@ -4,7 +4,7 @@ describe('Ship', () => {
     let ship;
 
 
-describe ('Ship', () => {
+describe ('constructor', () => {
     ship = new Ship('Seoul');
     it('instantiates an object', () => {
         expect(new Ship('Seoul')).toBeInstanceOf(Object);
@@ -14,5 +14,13 @@ describe ('Ship', () => {
     ship = new Ship('Seoul');
     expect(ship.port).toEqual('Seoul') 
     })
-}) 
+});
+
+describe('set sail', () => {
+    ship = new Ship ('Seoul');
+    it('should be able to set sail from a port', () => {
+        ship.setSail()
+        expect(ship.port).toBeFalsy();
+    });
+})
 });
