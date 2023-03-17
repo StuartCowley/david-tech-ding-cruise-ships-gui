@@ -27,7 +27,7 @@ describe('set sail', () => {
 
     it('should be able to set sail from a port', () => {
         ship.setSail();
-        expect(ship.startingPort).toBeFalsy();
+        expect(ship.currentPort).toBeFalsy();
     });
 })
 
