@@ -1,26 +1,44 @@
 const Ship = require('../src/ship')
+const Port = require('../src/port')
 
 describe('Ship', () => {
     let ship;
-
+    let manchester;
 
 describe ('constructor', () => {
-    ship = new Ship('Seoul');
+    manchester = new Port('Manchester');
+    ship = new Ship(manchester);
+
     it('instantiates an object', () => {
-        expect(new Ship('Seoul')).toBeInstanceOf(Object);
+        expect((manchester)).toBeInstanceOf(Object);
     })
 
     it('should have a starting port', () => {
-    ship = new Ship('Seoul');
-    expect(ship.port).toEqual('Seoul') 
+    manchester = new Port('Manchester');
+    ship = new Ship(manchester);
+
+    expect(ship.currentPort).toBe(manchester); 
     })
 });
 
 describe('set sail', () => {
-    ship = new Ship ('Seoul');
+    manchester = new Port('Manchester');
+    ship = new Ship(manchester);
+
     it('should be able to set sail from a port', () => {
-        ship.setSail()
-        expect(ship.port).toBeFalsy();
+        ship.setSail();
+        expect(ship.startingPort).toBeFalsy();
+    });
+})
+
+describe('dock', () => {
+    manchester = new Port('Manchester');
+    ship = new Ship(manchester);
+    london = new Port('London');
+
+    it('should dock at anoher port', () => {
+        ship.dock(london);
+        expect(ship.currentPort).toBe(london);
     });
 })
 });
