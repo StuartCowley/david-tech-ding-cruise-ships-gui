@@ -1,30 +1,31 @@
 const Port = require('../src/port')
 describe ('Port', () => {
     let manchester;
+    let shipl
+    let david;
+    let alpha;
 
+beforeEach(() => {
+    manchester = new Port ('Manchester');
+    ship = {};
+    david = {};
+    alpha = {};
+})
 describe('constructor', () => {
     it('instantiates an object', () => {
-        manchester = new Port ('Manchester');
         expect(new Port('Manchester')).toBeInstanceOf(Object);
     })
     
     it('sets a name property', () => {
-        manchester = new Port('Manchester');
         expect(manchester.name).toEqual('Manchester');
     })
 
     it('adds ships to a port', () => {
-        manchester = new Port ('Manchester');
-        const ship = {};
         manchester.addShip(ship);
         expect(manchester.ships).toContain(ship);
     })
 
-    it('removes ships from a port', () => {
-        manchester = new Port ('Manchester');
-        const david = {};
-        const alpha = {};
-        
+    it('removes ships from a port', () => {  
         manchester.addShip(david);
         manchester.addShip(alpha);
         manchester.removeShip(alpha);
