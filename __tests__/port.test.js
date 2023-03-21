@@ -1,15 +1,15 @@
 const Port = require('../src/port')
 describe ('Port', () => {
     let manchester;
-    let ship
+    let ship;
     let david;
     let alpha;
 
 beforeEach(() => {
     manchester = new Port ('Manchester');
-    ship = {};
-    david = {};
-    alpha = {};
+    ship = jest.fn();
+    david = jest.fn();
+    alpha = jest.fn();
 })
 describe('constructor', () => {
     it('instantiates an object', () => {
