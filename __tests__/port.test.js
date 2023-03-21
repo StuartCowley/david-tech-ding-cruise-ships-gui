@@ -1,7 +1,7 @@
 const Port = require('../src/port')
 describe ('Port', () => {
     let manchester;
-    let shipl
+    let ship
     let david;
     let alpha;
 
