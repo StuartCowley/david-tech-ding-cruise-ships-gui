@@ -3,6 +3,7 @@ const Ship = require('../src/ship')
 describe('Ship', () => {
     let ship;
     let manchester;
+    let london;
     let itinerary;
 
 beforeEach(() => {
@@ -36,7 +37,7 @@ describe ('with ports and itinerary', () => {
         expect(ship.currentPort).toBe(manchester); 
     })
 
-    
+
     it('gets added to port on instantiation', () => {
         expect(manchester.addShip).toHaveBeenCalledWith(ship);
     });
