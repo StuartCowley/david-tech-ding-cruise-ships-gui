@@ -27,8 +27,8 @@ beforeEach(() => {
     ship = new Ship(itinerary);     
 });
 
-describe ('constructor', () => {
-    it('instantiates an object', () => {
+describe ('with ports and itinerary', () => {
+    it('instantiates a ship object', () => {
         expect(ship).toBeInstanceOf(Object);
     })
 
@@ -36,12 +36,12 @@ describe ('constructor', () => {
         expect(ship.currentPort).toBe(manchester); 
     })
 
+    
     it('gets added to port on instantiation', () => {
         expect(manchester.addShip).toHaveBeenCalledWith(ship);
     });
-});
 
-describe('set sail', () => {
+
     it('should be able to set sail from a port', () => {
         ship.setSail();
         expect(ship.currentPort).toBeFalsy();
@@ -54,9 +54,8 @@ describe('set sail', () => {
 
         expect(() => ship.setSail()).toThrowError('You have reached the end of the itinerary');
     });
-})
 
-describe('dock', () => {
+
     it('should dock at another port', () => {
         ship.setSail();
         ship.dock();
@@ -70,5 +69,5 @@ describe('dock', () => {
         expect(ship.currentPort).toBe(london);
         expect(london.addShip).toHaveBeenCalledWith(ship);
     });
-})
+});
 });
