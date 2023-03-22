@@ -1,6 +1,4 @@
 const Ship = require('../src/ship')
-const Itinerary = require('../src/itinerary')
-
 
 describe('Ship', () => {
     let ship;
