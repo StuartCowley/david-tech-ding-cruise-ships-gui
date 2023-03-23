@@ -9,7 +9,7 @@ Controller.prototype.initialiseSea = function initialiseSea() {
     ];
     let backgroundIndex = 0;
     window.setInterval(() => {
-        document.querySelector('#viewport').getElementsByClassName.backgroundImage = `url('${backgrounds[backgroundIndex] % [backgrounds.length]}')`;
+        document.querySelector('#viewport').style.backgroundImage = `url('${backgrounds[backgroundIndex] % [backgrounds.length]}')`;
         backgroundIndex += 1;
     }, 1000);
 };
