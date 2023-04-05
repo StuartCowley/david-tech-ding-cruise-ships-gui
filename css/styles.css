@@ -35,14 +35,12 @@ body {
     width: 128px;
     height: 64px;
     position: absolute;
-    display: flex;
-
 }
 
 #sailbutton {
     font-family: 'Press Start 2P', cursive;
-    position: fixed;
-    max-width: 100%;
+    position: absolute;
+    width: 100%;
     padding: 10px 20px;
     margin-top: 70px;
 }
@@ -63,4 +61,13 @@ body {
     padding: 10px 20px;
     margin-top: 70px;
     width: 100%
+}
+
+#heads-up-display {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    margin: 10px;
 }

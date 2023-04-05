@@ -8,6 +8,8 @@ class Controller {
     sailBtn.addEventListener("click", () => {
       this.setSail()
     })
+
+    this.renderHeadsUpDisplay()
   }
 
   initialiseSea() {
@@ -59,8 +61,8 @@ class Controller {
     if (!nextPortElement) {
       return alert("End of the line!")
     }
-
-    this.renderMessage(`Now departing from ${ship.currentPort.name}`)
+    const message = `Now departing from ${ship.currentPort.name}`
+    this.renderMessage(message)
 
     const shipElement = document.querySelector("#ship")
     const sailInterval = setInterval(() => {
@@ -68,21 +70,33 @@ class Controller {
       if (shipLeft === nextPortElement.offsetLeft - 32) {
         ship.setSail()
         ship.dock()
-        this.renderMessage(`Now arrived at ${ship.currentPort.name}`)
+        const message = `Now arrived at ${ship.currentPort.name}`
+        this.renderMessage(message)
         clearInterval(sailInterval)
       }
 
       shipElement.style.left = `${shipLeft + 1}px`
     }, 20)
+
+    this.renderHeadsUpDisplay()
   }
 
   renderMessage(message) {
     const messageElement = document.createElement("div")
     messageElement.id = "message"
     messageElement.innerHTML = message
-    document.querySelector("#viewport").appendChild(messageElement)
+    document.querySelector("#divMessage").appendChild(messageElement)
     setTimeout(() => {
-      document.querySelector("#viewport").removeChild(messageElement)
+      document.querySelector("#divMessage").removeChild(messageElement)
     }, 2000)
+  }
+
+  renderHeadsUpDisplay() {
+    const ship = this.ship
+    const headsUpDisplay = document.querySelector("#heads-up-display")
+    const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort)
+    const nextPortIndex = currentPortIndex + 1
+    headsUpDisplay.innerHTML = `Current Port: ${ship.currentPort.name}`
+    headsUpDisplay.innerHTML += `<br> Next port: ${ship.itinerary.ports[nextPortIndex].name}`
   }
 }
