@@ -85,9 +85,15 @@ class Controller {
     const messageElement = document.createElement("div")
     messageElement.id = "message"
     messageElement.innerHTML = message
-    document.querySelector("#divMessage").appendChild(messageElement)
+    const viewport = document.querySelector("#viewport")
+    viewport.appendChild(messageElement)
+
+    messageElement.style.position = "relative"
+    messageElement.style.bottom = "200px"
+    messageElement.style.right = "10px"
+
     setTimeout(() => {
-      document.querySelector("#divMessage").removeChild(messageElement)
+      viewport.removeChild(messageElement)
     }, 2000)
   }
 
