@@ -1,13 +1,35 @@
-const Port = require('../src/port.js')
+const Port = require("../src/port")
+describe("Port", () => {
+  let manchester
+  let ship
+  let david
+  let alpha
 
-
-describe('Port', () => {
-    it('instantiates a port object', () => {
-        expect(new Port()).toBeInstanceOf(Object);
+  beforeEach(() => {
+    manchester = new Port("Manchester")
+    ship = jest.fn()
+    david = jest.fn()
+    alpha = jest.fn()
+  })
+  describe("constructor", () => {
+    it("instantiates an object", () => {
+      expect(new Port("Manchester")).toBeInstanceOf(Object)
     })
 
-    it('sets the name property', () => {
-        const port = new Port('Korea');
-        expect(port.name).toEqual('Korea');
+    it("sets a name property", () => {
+      expect(manchester.name).toEqual("Manchester")
     })
-});
+
+    it("adds ships to a port", () => {
+      manchester.addShip(ship)
+      expect(manchester.ships).toContain(ship)
+    })
+
+    it("removes ships from a port", () => {
+      manchester.addShip(david)
+      manchester.addShip(alpha)
+      manchester.removeShip(alpha)
+      expect(manchester.ships).toEqual([david])
+    })
+  })
+})
